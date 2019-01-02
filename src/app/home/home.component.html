@@ -1,3 +1,85 @@
-<p>
-  home works!
-</p>
+<form #homeForm="ngForm" (ngSubmit)="create(homeForm.value)">
+
+  <input  
+    ngModel
+    name="giftFrom"
+    type="text"
+    placeholder="Who gave you the present?"
+  >
+  <input  
+    ngModel
+    name="giftTo"
+    type="text"
+    placeholder="Who you gave a present to?"
+  >
+
+  <input  
+    ngModel
+    name="whatItIs"
+    type="text"
+    placeholder="What is the present?"
+  >
+  <input  
+    ngModel
+    name="rating"
+    type="range"
+    min="0"
+    max="5"
+    placeholder="Star rating"
+  >
+  <input  
+    ngModel
+    name="thankYou"
+    type="checkbox"
+    placeholder="Have you paid respects"
+  >
+
+<button type="submit">Submit</button>
+
+</form>
+
+<div *ngFor="let present of presents | async">
+  <ul>
+    <li>
+
+        {{present.giftFrom}}
+        {{present.giftTo}}
+        {{present.whatItIs}}
+        {{present.rating}}
+        {{present.thankYou}}
+
+        <button (click)="delete(present)">Delete</button>
+    </li>
+  </ul>
+
+  <form #updateForm="ngForm" (ngSubmit)="update(present)">
+    <input
+      name="giftFrom"
+      [(ngModel)]="present.giftFrom">
+
+    <input 
+      name="giftTo"
+      [(ngModel)]="present.giftTo">
+
+    <input 
+      name="whatItIs"
+      [(ngModel)]="present.whatItIs">
+
+    <input 
+      name="rating"
+      type="range"
+      min="0"
+      max="5"
+      [(ngModel)]="present.rating">
+    
+    <input 
+      name="thankYou"
+      [(ngModel)]="present.thankYou"
+      type="checkbox">
+    
+    <button type="submit">Update</button>
+    
+  </form>
+</div>
+
+<button (click)="logout()">LogOut</button>
