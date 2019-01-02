@@ -31,6 +31,10 @@ export class HomeComponent implements OnInit {
     this.session.update(presents)
   }
 
+  showInput(presents:IPresentID){
+    this.session.showInput(presents)
+  }
+
   ngOnInit() {
   }
 

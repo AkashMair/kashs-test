@@ -67,4 +67,10 @@ export class SessionService {
     return this.myAuth.user
   }
 
+  showInput(presents:IPresentID){
+    this.presentCollection.doc(presents.id).update({
+      hideEdit: false
+    })
+  }
+
 }

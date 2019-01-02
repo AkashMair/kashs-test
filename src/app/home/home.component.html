@@ -49,10 +49,11 @@
         {{present.thankYou}}
 
         <button (click)="delete(present)">Delete</button>
+        <button (click)="showInput(present)">Edit info</button>
     </li>
   </ul>
 
-  <form #updateForm="ngForm" (ngSubmit)="update(present)">
+  <form #updateForm="ngForm" (ngSubmit)="update(present)" [hidden]="present.hideEdit">
     <input
       name="giftFrom"
       [(ngModel)]="present.giftFrom">
