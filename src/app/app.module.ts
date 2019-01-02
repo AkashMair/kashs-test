@@ -8,7 +8,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { AuthGuardService } from './services/auth-guard.service'
+import { AuthGuardService } from './services/auth-guard.service';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -35,7 +36,8 @@ import { HomeComponent } from './home/home.component';
       {path: 'login', component: LoginComponent},
       {path: 'register', component:RegisterComponent}
     ]),
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [AuthGuardService],
   bootstrap: [AppComponent]

@@ -9,7 +9,7 @@ export interface IPresent {
   whatItIs: string
   picture
   rating: number
-  date: string
+  date: Date
   thankYou: boolean
   userID: string
   hideEdit: boolean
@@ -22,7 +22,9 @@ export interface IPresentID extends IPresent { id:string }
 })
 export class SessionService {
 
-  constructor( private afs: AngularFirestore, private myAuth:MyAuthService) { }
+  constructor( private afs: AngularFirestore, private myAuth:MyAuthService) { 
+    
+  }
 
   get presentCollection(){
     return this.afs.collection('presents', (ref)=>{
@@ -31,7 +33,7 @@ export class SessionService {
   }
 
   create(presents:IPresent){
-    this.presentCollection.add({userID: this.user.uid,...presents, hideEdit:true})
+    this.presentCollection.add({userID: this.user.uid,...presents, hideEdit:true,date: new Date() })
   }
 
   get presents(){
@@ -72,5 +74,7 @@ export class SessionService {
       hideEdit: false
     })
   }
+
+ 
 
 }
