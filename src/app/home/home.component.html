@@ -47,7 +47,10 @@
      <angular-file-uploader
      [config]="afuConfig">
 </angular-file-uploader> -->
-<a [href]="downloadURL | async">{{ downloadURL | async }}</a>
+
+<!-- <div *ngFor = "let nameid of downloadURL"> -->
+<a [href]="downloadURL | async"><img src="{{ downloadURL | async }}"/></a>
+<!-- </div> -->
 
 
 
