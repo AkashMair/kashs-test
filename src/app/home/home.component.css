@@ -1,0 +1,84 @@
+.flex{
+    display: flex;
+    flex-direction: row;
+}
+
+#background{
+    background-image: url('../../assets/weirdelf.jpg');
+    min-height: 100vh;
+    width:100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    width:100%;
+    position: absolute;
+    font-family:  'Indie Flower';
+    font-size: 1.25rem;
+
+}
+
+.left{
+    display: flex;
+    flex-basis: 200px;
+    flex-direction: column;
+    padding:20px;
+    margin:20px;
+    /* position: fixed; */
+    border: 5px dotted rgb(209,39,66);
+    background-color: rgba(255,255,255, 0.8);
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+
+}
+
+input, li, button {
+    padding:10px;
+    margin:10px;
+    font-family:  'Indie Flower';
+
+}
+
+.right {
+    display: flex;
+    flex:1;
+    flex-direction: column;
+    padding:20px;
+    margin:20px;
+    border:5px dotted green;
+    background-color: rgba(255,255,255, 0.8);
+    border-radius: 15px;
+}
+
+.bottom{ 
+    display: flex;
+    justify-content: space-between;
+}
+
+
+ul{
+    list-style-type: none;
+    padding:0;
+}
+
+h1{
+    text-align: center;
+    font-family: 'Mountains of Christmas';
+    font-size: 6rem;
+    /* color: rgb(209,39,66);
+    text-shadow: 2px 2px  green; */
+}
+
+button {
+    background-color: rgb(209,39,66);
+    color: white;
+    border: 1px, solid, green;
+}
+
+li {
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+
+

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { map, finalize } from 'rxjs/operators';
 import { MyAuthService } from '../services/my-auth.service';
-import {AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from '@angular/fire/storage';
+import {AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
 
 
@@ -11,7 +11,7 @@ export interface IPresent {
   giftFrom: string
   giftTo: string
   whatItIs: string
-  picture
+  picture: string
   rating: number
   date: Date
   thankYou: boolean
@@ -28,18 +28,18 @@ export class SessionService {
 
   downloadURL: Observable<string>;
 
-  constructor( private afs: AngularFirestore, private myAuth:MyAuthService, private storage:AngularFireStorage) { 
+  constructor( private afs: AngularFirestore, private myAuth:MyAuthService, private storage:AngularFireStorage ) { 
     
   }
 
   get presentCollection(){
     return this.afs.collection('presents', (ref)=>{
-      return ref.where('userID', '==', this.user.uid)
+      return ref.where('userID', '==', this.user.uid).orderBy('date', 'desc')
     })
   }
 
   create(presents:IPresent){
-    this.presentCollection.add({userID: this.user.uid,...presents, hideEdit:true,date: new Date(), picture:'hello' })
+    this.presentCollection.add({userID: this.user.uid,...presents, hideEdit:true,date: new Date(), picture: 'test :('})
   }
 
   get presents(){
@@ -87,9 +87,11 @@ export class SessionService {
     const fileRef = this.storage.ref(id);
     const task = this.storage.upload(id, file);
     task.snapshotChanges().pipe(
-      finalize(() => this.downloadURL = fileRef.getDownloadURL() )
+      finalize(() =>{this.downloadURL = fileRef.getDownloadURL()
+      console.log(fileRef.getDownloadURL)})
    )
   .subscribe()
-  }
+    }
 
 }
+

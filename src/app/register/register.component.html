@@ -1,9 +1,11 @@
 
-<div class="container">
+<div class="container" id="register">
+
+  <h1>Join the North Pole</h1>
   
   <form #registerForm="ngForm" (ngSubmit)="register(registerForm.value)">
   
-    <div>
+    <div class="email">
       <!-- <label for="email">Email</label> -->
       <input
         type="email"

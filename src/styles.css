@@ -5,7 +5,11 @@
 }
 
 body{
-    min-height: 100vh
+    /* background-image: url("../src/assets/santa-claus-2927962__340.png"); */
+    /* background-color: url('./assets/snowman.jpg'); */
+    min-height: 100vh;
+    font-family:'Indie Flower';
+    
 }
 
 .container{
@@ -15,7 +19,6 @@ body{
     align-items: center;
     text-align: center;
     height: auto;
-    border: 1px solid black;
     width: 60%;
 }
 
@@ -23,3 +26,5 @@ input, button {
     border-radius: 5px;
     border: 0.5px solid black;
 }
+
+

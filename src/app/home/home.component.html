@@ -1,118 +1,130 @@
-<form #homeForm="ngForm" (ngSubmit)="create(homeForm.value); homeForm.reset()" >
-
-  <input  
+<div id="background">
+    <h1>Nice List</h1>
+<div class="flex">
+  
+    <form #homeForm="ngForm" (ngSubmit)="create(homeForm.value); homeForm.reset()" >
+  
+  <div class="left">
+    <input
     ngModel
     name="giftFrom"
     type="text"
-    placeholder="Who gave you the present?"
-  >
-  <input  
+    placeholder="Who gave a present?"
+    >
+    <input
     ngModel
     name="giftTo"
     type="text"
-    placeholder="Who you gave a present to?"
-  >
-
-  <input  
+    placeholder="Who got a present?"
+    >
+    
+    <input
     ngModel
     name="whatItIs"
     type="text"
-    placeholder="What is the present?"
-  >
-  <input  
+    placeholder="What was the present?"
+    >
+    <input
     ngModel
     name="rating"
     type="range"
     min="0"
     max="5"
     placeholder="Star rating"
-  >
-  <input  
+    >
+    <label >Thank you letter sent</label>
+    <input
     ngModel
     name="thankYou"
     type="checkbox"
-  >
-
-  <input
+    >
+    
+    <input
     ngModel
     type="file"
     name="picture"
     (change)="upload($event)">
+    
     <!-- <button (click)="onUpload()">Upload</button> -->
     <!-- <div class=”image-preview” >
-        <img [src]=”imagePreview” >
-        </div> -->
-     <!-- {{ value_expression | date: "dd/MM/yy"}}  -->
-<!-- 
-     <angular-file-uploader
-     [config]="afuConfig">
-</angular-file-uploader> -->
+      <img [src]=”imagePreview” >
+    </div> -->
+    <!-- {{ value_expression | date: "dd/MM/yy"}}  -->
+    <!--
+      <angular-file-uploader
+      [config]="afuConfig">
+    </angular-file-uploader> -->
+    
+    <!-- <div *ngFor = "let nameid of downloadURL"> -->
+      <!-- </div> -->
+      
+      
+      
+      <button type="submit">Submit</button>
+      <button (click)="sendLetters()">Generate Letters</button>
 
-<!-- <div *ngFor = "let nameid of downloadURL"> -->
-<a [href]="downloadURL | async"><img src="{{ downloadURL | async }}"/></a>
-<!-- </div> -->
+    </div>
+  </form>
+  
+  <div class="right">
+  <div *ngFor="let present of presents | async">
+    <ul>
+      <li>
+        <div>{{present.date.toDate() | date:'dd/MM/y'}}</div>
 
-
-
-<button type="submit">Submit</button>
-
-</form>
-
-<div *ngFor="let present of presents | async">
-  <ul>
-    <li>
-        {{present.date.toDate() | date:'short'}}
-        {{present.giftFrom}}
-        {{present.giftTo}}
-        {{present.whatItIs}}
-        {{present.rating}}
-        {{present.thankYou}}
-        {{present.picture}}
+        <div class="bottom">
+        Hey! {{present.giftTo}} got a {{present.whatItIs}} from {{present.giftFrom}} and liked it {{present.rating}} out of 5 
+        <!-- {{present.picture}} -->
         <!-- <div *ngIf="downloadURL | async; let downloadSrc">
-            File uploaded: <a [href]="downloadSrc">{{downloadSrc}}</a>
+          File uploaded: <a [href]="downloadSrc">{{downloadSrc}}</a>
         </div> -->
         <!-- File uploaded: <a [href]="downloadSrc">{{downloadSrc}}</a> -->
-
-
+        <a [href]="downloadURL | async"><img src="{{ downloadURL | async }}"/></a>
+        
+        <div>
         <button (click)="delete(present)">Delete</button>
         <button (click)="showInput(present)">Edit info</button>
-    </li>
-  </ul>
-
-  <form #updateForm="ngForm" (ngSubmit)="update(present)" [hidden]="present.hideEdit">
-    <input
+        </div>
+        </div>
+      </li>
+    </ul>
+    
+    <form #updateForm="ngForm" (ngSubmit)="update(present)" [hidden]="present.hideEdit">
+      <input
       name="giftFrom"
       [(ngModel)]="present.giftFrom">
-
-    <input 
+      
+      <input
       name="giftTo"
       [(ngModel)]="present.giftTo">
-
-    <input 
+      
+      <input
       name="whatItIs"
       [(ngModel)]="present.whatItIs">
-
-    <input 
+      
+      <input
       name="rating"
       type="range"
       min="0"
       max="5"
       [(ngModel)]="present.rating">
-    
-    <input 
+      
+      <input
       name="thankYou"
       [(ngModel)]="present.thankYou"
       type="checkbox">
-
-      <!-- <input 
-      name="picture"
-      [(ngModel)]="present.picture"
-      type="file"
-      value = "present.picture"> -->
-    
-    <button type="submit">Update</button>
-    
-  </form>
+      
+      <!-- <input
+        name="picture"
+        [(ngModel)]="present.picture"
+        type="file"
+        value = "present.picture"> -->
+        
+        <button type="submit">Update</button>
+        
+      </form>
+    </div>
+    </div>
+  </div>
+    <button (click)="logout()">LogOut</button>
 </div>
-<button (click)="sendLetters()">Generate Letters</button>
-<button (click)="logout()">LogOut</button>

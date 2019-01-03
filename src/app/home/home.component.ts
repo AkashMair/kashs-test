@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit {
   presents: Observable<IPresent[]>;
   constructor(private myAuth:MyAuthService, private session:SessionService, private http:HttpClient, private storage:AngularFireStorage, private router:Router) {
     this.presents = this.session.presents
+    this.downloadURL=this.session.downloadURL
     
   }
 

@@ -11,6 +11,8 @@ import { FormsModule } from '@angular/forms';
 import { AuthGuardService } from './services/auth-guard.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFileUploaderModule } from "angular-file-uploader";
+import { StarRatingModule } from 'angular-star-rating';
+
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -42,7 +44,8 @@ import { LettersComponent } from './letters/letters.component';
     ]),
     FormsModule,
     HttpClientModule,
-    AngularFileUploaderModule
+    AngularFileUploaderModule,
+    StarRatingModule
   ],
   providers: [AuthGuardService],
   bootstrap: [AppComponent]
