@@ -1,15 +1,37 @@
-<form #registerForm="ngForm" (ngSubmit)="register(registerForm.value)">
 
-  <input
-    type="email"
-    name="email"
-    ngModel>
+<div class="container">
   
-  <input 
-    type="password"
-    name="password"
-    ngModel>
-  <button type="submit">Register</button>
-
-
-</form>
+  <form #registerForm="ngForm" (ngSubmit)="register(registerForm.value)">
+  
+    <div>
+      <!-- <label for="email">Email</label> -->
+      <input
+        type="email"
+        name="email"
+        #emailAddress="ngModel"
+        email
+        ngModel>
+        <div *ngIf = "emailAddress.invalid && emailAddress.touched">
+            <small *ngIf="emailAddress.errors.required" >Email is required</small>
+            <small *ngIf="emailAddress.errors.email">Email is invalid</small>
+        </div>
+    </div>
+    
+    <div>
+      <!-- <label for="password">Password</label> -->
+      <input 
+        type="password"
+        name="password"
+        pattern ="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"
+        minlength="6"
+        #passwordSecurity="ngModel"
+        ngModel>
+        <div *ngIf="passwordSecurity.invalid && passwordSecurity.touched">
+            <small *ngIf = "passwordSecurity.errors.required">Password required</small>
+            <small *ngIf = "passwordSecurity.errors.minlength">Password must be at least 6 characters</small>
+            <small *ngIf = "passwordSecurity.errors.pattern">Password must contain a combination of uppercase, lowercase and numbers</small>
+          </div>
+    </div>
+    <button type="submit">Register</button>
+  </form>
+</div>

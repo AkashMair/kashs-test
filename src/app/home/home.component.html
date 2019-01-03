@@ -37,9 +37,18 @@
     ngModel
     type="file"
     name="picture"
-    (change)="picUploaded($event)">
-    <button (click)="onUpload()">Upload</button>
-     {{currentDate?.toDate() | date: "dd/MM/yy"}} 
+    (change)="upload($event)">
+    <!-- <button (click)="onUpload()">Upload</button> -->
+    <!-- <div class=”image-preview” >
+        <img [src]=”imagePreview” >
+        </div> -->
+     <!-- {{ value_expression | date: "dd/MM/yy"}}  -->
+<!-- 
+     <angular-file-uploader
+     [config]="afuConfig">
+</angular-file-uploader> -->
+<a [href]="downloadURL | async">{{ downloadURL | async }}</a>
+
 
 
 <button type="submit">Submit</button>
@@ -56,6 +65,11 @@
         {{present.rating}}
         {{present.thankYou}}
         {{present.picture}}
+        <!-- <div *ngIf="downloadURL | async; let downloadSrc">
+            File uploaded: <a [href]="downloadSrc">{{downloadSrc}}</a>
+        </div> -->
+        <!-- File uploaded: <a [href]="downloadSrc">{{downloadSrc}}</a> -->
+
 
         <button (click)="delete(present)">Delete</button>
         <button (click)="showInput(present)">Edit info</button>
@@ -87,11 +101,11 @@
       [(ngModel)]="present.thankYou"
       type="checkbox">
 
-      <input 
+      <!-- <input 
       name="picture"
       [(ngModel)]="present.picture"
       type="file"
-      value = "present.picture">
+      value = "present.picture"> -->
     
     <button type="submit">Update</button>
     

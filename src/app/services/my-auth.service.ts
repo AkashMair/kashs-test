@@ -20,7 +20,7 @@ export class MyAuthService {
   logout(){
     return this.afAuth.auth.signOut()
     .then(()=>this.router.navigate(['login']))
-    .catch((error:Error)=>{throw error})
+     .catch((error:Error)=>{throw error})
   }
 
   get user(){

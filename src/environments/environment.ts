@@ -10,6 +10,9 @@ export const environment = {
   projectId: "test-f3015",
   storageBucket: "test-f3015.appspot.com",
   messagingSenderId: "336275953621"}
+  // uploadAPI: {
+  //   url:"https://example-file-upload-api"
+  // }
 };
 
 /*
