@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { map } from 'rxjs/operators';
-import { MyAuthService } from '../services/my-auth.service'
+import { map, finalize } from 'rxjs/operators';
+import { MyAuthService } from '../services/my-auth.service';
+import {AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from '@angular/fire/storage';
+import { Observable } from 'rxjs';
+
+
 
 export interface IPresent {
   giftFrom: string
@@ -22,7 +26,9 @@ export interface IPresentID extends IPresent { id:string }
 })
 export class SessionService {
 
-  constructor( private afs: AngularFirestore, private myAuth:MyAuthService) { 
+  downloadURL: Observable<string>;
+
+  constructor( private afs: AngularFirestore, private myAuth:MyAuthService, private storage:AngularFireStorage) { 
     
   }
 
@@ -33,7 +39,7 @@ export class SessionService {
   }
 
   create(presents:IPresent){
-    this.presentCollection.add({userID: this.user.uid,...presents, hideEdit:true,date: new Date() })
+    this.presentCollection.add({userID: this.user.uid,...presents, hideEdit:true,date: new Date(), picture:'hello' })
   }
 
   get presents(){
@@ -73,6 +79,17 @@ export class SessionService {
     this.presentCollection.doc(presents.id).update({
       hideEdit: false
     })
+  }
+
+  upload(event){
+    const id = Math.random().toString(36).substring(2);
+    const file = event.target.files[0];
+    const fileRef = this.storage.ref(id);
+    const task = this.storage.upload(id, file);
+    task.snapshotChanges().pipe(
+      finalize(() => this.downloadURL = fileRef.getDownloadURL() )
+   )
+  .subscribe()
   }
 
 }

@@ -1,0 +1,11 @@
+<div *ngFor="let present of presents | async">
+  <div *ngIf="present.thankYou == false">
+    <ul>
+      <li>
+         Hi {{present.giftFrom}},
+         Thanks for your {{present.whatItIs}}, I gave it a score of {{present.rating}} out of 5.
+         From {{present.giftTo}}
+      </li>
+    </ul>
+  </div>
+</div>

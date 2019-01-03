@@ -5,6 +5,7 @@ import { IPresent, SessionService, IPresentID } from '../services/session.servic
 import { HttpClient } from '@angular/common/http';
 import {AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators';
+import { Router } from '@angular/router'
 
 
 @Component({
@@ -21,7 +22,7 @@ export class HomeComponent implements OnInit {
   downloadURL: Observable<string>;
 
   presents: Observable<IPresent[]>;
-  constructor(private myAuth:MyAuthService, private session:SessionService, private http:HttpClient, private storage:AngularFireStorage) {
+  constructor(private myAuth:MyAuthService, private session:SessionService, private http:HttpClient, private storage:AngularFireStorage, private router:Router) {
     this.presents = this.session.presents
     
   }
@@ -49,24 +50,25 @@ export class HomeComponent implements OnInit {
   upload(event){
     // this.selectedFile = event.target.files[0];
     // this.storage.upload('presents', event.target.files[0]);
-      const id = Math.random().toString(36).substring(2);
-      // this.ref = this.storage.ref(id);
-      // this.task = this.ref.put(event.target.files[0]);
-      // this.downloadURL = this.
-    //   const file = event.target.files[0];
-    // const filePath = 'name-your-file-path-here';
-    // const fileRef = this.storage.ref(filePath) // Add this line to get the path as a ref
-    // const task = this.storage.upload(filePath, file);
-    // this.downloadURL = fileRef.getDownloadURL() // And this one to actually grab the URL from the Ref
-    const file = event.target.files[0];
-    // const filePath = 'name-your-file-path-here';
-    const fileRef = this.storage.ref(id);
-    const task = this.storage.upload(id, file);
-    // get notified when the download URL is available
-    task.snapshotChanges().pipe(
-        finalize(() => this.downloadURL = fileRef.getDownloadURL() )
-     )
-    .subscribe()
+  //     const id = Math.random().toString(36).substring(2);
+  //     // this.ref = this.storage.ref(id);
+  //     // this.task = this.ref.put(event.target.files[0]);
+  //     // this.downloadURL = this.
+  //   //   const file = event.target.files[0];
+  //   // const filePath = 'name-your-file-path-here';
+  //   // const fileRef = this.storage.ref(filePath) // Add this line to get the path as a ref
+  //   // const task = this.storage.upload(filePath, file);
+  //   // this.downloadURL = fileRef.getDownloadURL() // And this one to actually grab the URL from the Ref
+  //   const file = event.target.files[0];
+  //   // const filePath = 'name-your-file-path-here';
+  //   const fileRef = this.storage.ref(id);
+  //   const task = this.storage.upload(id, file);
+  //   // get notified when the download URL is available
+  //   task.snapshotChanges().pipe(
+  //       finalize(() => this.downloadURL = fileRef.getDownloadURL() )
+  //    )
+  //   .subscribe()
+      this.session.upload(event);
   }
     
 
@@ -79,6 +81,10 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit() {
+  }
+
+  sendLetters(){
+    this.router.navigate(['letters'])
   }
 
 }

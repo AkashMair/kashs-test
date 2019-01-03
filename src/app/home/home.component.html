@@ -61,7 +61,7 @@
 <div *ngFor="let present of presents | async">
   <ul>
     <li>
-        {{present.date}}
+        {{present.date.toDate() | date:'short'}}
         {{present.giftFrom}}
         {{present.giftTo}}
         {{present.whatItIs}}
@@ -114,5 +114,5 @@
     
   </form>
 </div>
-
+<button (click)="sendLetters()">Generate Letters</button>
 <button (click)="logout()">LogOut</button>
