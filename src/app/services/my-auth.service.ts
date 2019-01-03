@@ -26,4 +26,9 @@ export class MyAuthService {
   get user(){
     return this.afAuth.auth.currentUser
   }
+
+  forgotPassword(email:string){
+    console.log('reached here' + email);
+    return this.afAuth.auth.sendPasswordResetEmail(email);
+  }
 }

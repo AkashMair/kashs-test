@@ -35,7 +35,15 @@
             </div>
       </div>
       <p>Create an account <a href='/register'>here</a></p>
-      <button type="submit">Login</button>
-      
+      <button >Login</button>
     </form>
+      <input
+        [(ngModel)]="forgottenPasswordEmail"
+        type="email"
+        id="forgottenPasswordEmail"
+        name="forgottenPasswordEmail">
+
+      <button (click)="forgotPassword()">Reset Password</button>
+      
+    
   </div>

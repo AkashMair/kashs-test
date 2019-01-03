@@ -1,10 +1,5 @@
-.banner{
-    background-image: url('../../assets/merry-christmas-banner-vector-400387.jpg');
-    width:100vw;
-    height:100px;
-    background-size: cover;
-    background-position: 10px, 100px; 
-
+body{
+    background-color: rgb(201,224,230,)
 }
 
 .thanks{

@@ -11,6 +11,8 @@ export class LoginComponent implements OnInit {
 
   errorMessage='';
 
+  forgottenPasswordEmail='';
+
   constructor(private router: Router, private myAuth:MyAuthService) { }
 
   login(details:{email:string, password:string}){
@@ -18,6 +20,12 @@ export class LoginComponent implements OnInit {
       .then(()=>this.router.navigate(['']))
         .catch((error:Error)=>{this.errorMessage=error.message})
   }
+
+  forgotPassword(){
+    this.myAuth.forgotPassword(this.forgottenPasswordEmail);
+
+  }
+
 
   ngOnInit() {
   }

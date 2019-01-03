@@ -78,7 +78,18 @@ button {
 li {
     border: 1px solid black;
     border-radius: 10px;
+    background-color: rgba(201,224,230, 0.5)
 }
 
+.center-button {
+    display:block;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    background-color: black;
+}
+
+.green-b {
+    background-color: green;
+}
 
 

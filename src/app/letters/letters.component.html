@@ -1,3 +1,4 @@
+<a [routerLink]='["/"]'><i class="fas fa-arrow-left"></i></a>
 <div *ngFor="let present of presents | async">
   <div *ngIf="present.thankYou == false">
     <ul >
@@ -6,7 +7,7 @@
            <p>
              Hi {{present.giftFrom}},
            </p>
-           <p>Thanks for your {{present.whatItIs}},</p>
+           <p>Thanks for your {{present.whatItIs}}!</p>
             <p>  I gave it a score of {{present.rating}} out of 5.</p>
            <p>From {{present.giftTo}}</p>
       </li>

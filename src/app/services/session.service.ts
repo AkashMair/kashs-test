@@ -39,7 +39,7 @@ export class SessionService {
   }
 
   create(presents:IPresent){
-    this.presentCollection.add({userID: this.user.uid,...presents, hideEdit:true,date: new Date(), picture: 'test :('})
+    this.presentCollection.add({userID: this.user.uid,...presents, hideEdit:true,date: new Date()})
   }
 
   get presents(){
@@ -87,11 +87,18 @@ export class SessionService {
     const fileRef = this.storage.ref(id);
     const task = this.storage.upload(id, file);
     task.snapshotChanges().pipe(
-      finalize(() =>{this.downloadURL = fileRef.getDownloadURL()
-      console.log(fileRef.getDownloadURL)})
+      finalize(() =>{this.downloadURL = fileRef.getDownloadURL();
+      console.log('hello', fileRef.getDownloadURL())})
    )
-  .subscribe()
+  .subscribe(url=>{
+    if (url){
+      console.log(url)
     }
+  }) 
+  console.log('hello part 2', fileRef.getDownloadURL())
+  }
 
 }
+
+
 
