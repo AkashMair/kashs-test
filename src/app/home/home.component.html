@@ -119,13 +119,20 @@
       name="whatItIs"
       [(ngModel)]="present.whatItIs">
       
-      <input
+      <!-- <input
       name="rating"
       type="range"
       min="0"
       max="5"
-      [(ngModel)]="present.rating">
+      [(ngModel)]="present.rating"> -->
+      <rating 
+      class="star" 
+      [(ngModel)]="present.rating"
+      max="5"
+      name="rating"
+      ></rating>
       
+      <label>Thank you letter sent</label>
       <input
       name="thankYou"
       [(ngModel)]="present.thankYou"

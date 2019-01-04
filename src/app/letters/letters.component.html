@@ -1,5 +1,5 @@
 <a [routerLink]='["/"]'><i class="fas fa-arrow-left"></i></a>
-<!-- <button (click)="print()">Print</button> -->
+<i class="fas fa-print" (click)="print()"></i>
 <div *ngFor="let present of presents | async">
   <div *ngIf="present.thankYou == false">
     <ul >

@@ -33,7 +33,8 @@ li {
     font-size:2rem;
 }
 
-.fa-arrow-left{
+.fa-arrow-left, .fa-print{
     font-size:2rem;
     margin:10px;
+    color: navy;
 }

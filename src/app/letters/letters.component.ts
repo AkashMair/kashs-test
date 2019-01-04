@@ -15,9 +15,9 @@ export class LettersComponent implements OnInit {
     this.presents = this.session.presents
    }
 
-  //  print(){
-  //    window.print()
-  //  }
+   print(){
+     window.print()
+   }
 
   ngOnInit() {
   }
