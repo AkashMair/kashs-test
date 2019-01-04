@@ -10,12 +10,14 @@
     name="giftFrom"
     type="text"
     placeholder="Who gave a present?"
+    required
     >
     <input
     ngModel
     name="giftTo"
     type="text"
     placeholder="Who got a present?"
+    required
     >
     
     <input
@@ -23,15 +25,30 @@
     name="whatItIs"
     type="text"
     placeholder="What was the present?"
+    required
     >
-    <input
+
+    <!-- <input
     ngModel
     name="rating"
     type="range"
     min="0"
     max="5"
-    placeholder="Star rating"
-    >
+    [(ngModel)]="rate" 
+    [max]="max"
+    > -->
+    <label>How much you liked it?</label>
+    <rating 
+      class="star"
+      ngModel 
+      [(ngModel)]="rate" 
+      max="5"
+      name="rating"
+      required
+      ></rating>
+
+
+
     <label >Thank you letter sent</label>
     <input
     ngModel
@@ -73,13 +90,13 @@
         <div>{{present.date.toDate() | date:'dd/MM/y'}}</div>
 
         <div class="bottom">
-        Hey! {{present.giftTo}} got a {{present.whatItIs}} from {{present.giftFrom}} and liked it {{present.rating}} out of 5 
-        <!-- {{present.picture}} -->
+        Hey! {{present.giftTo}} got a {{present.whatItIs}} from {{present.giftFrom}} and I gave it {{present.rating}} out of 5 stars
+        <img src='{{present.picture}}'/>
         <!-- <div *ngIf="downloadURL | async; let downloadSrc">
           File uploaded: <a [href]="downloadSrc">{{downloadSrc}}</a>
         </div> -->
         <!-- File uploaded: <a [href]="downloadSrc">{{downloadSrc}}</a> -->
-        <a [href]="downloadURL | async"><img src="{{ downloadURL | async }}"/></a>
+        <!-- <a [href]="downloadURL | async"><img src="{{ downloadURL | async }}"/></a> -->
         
         <div>
         <button (click)="delete(present)">Delete</button>

@@ -12,11 +12,9 @@
           name="email"
           #emailAddress="ngModel"
           email
+          placeholder="Email Address"
           ngModel>
-          <div *ngIf = "emailAddress.invalid && emailAddress.touched">
-              <small *ngIf="emailAddress.errors.required" >Email is required</small>
-              <small *ngIf="emailAddress.errors.email">Email is invalid</small>
-          </div>
+          
       </div>
       
       <div>
@@ -27,23 +25,31 @@
           pattern ="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"
           minlength="6"
           #passwordSecurity="ngModel"
+          placeholder="Password"
           ngModel>
-          <div *ngIf="passwordSecurity.invalid && passwordSecurity.touched">
-              <small *ngIf = "passwordSecurity.errors.required">Password required</small>
-              <small *ngIf = "passwordSecurity.errors.minlength">Password must be at least 6 characters</small>
-              <small *ngIf = "passwordSecurity.errors.pattern">Password must contain a combination of uppercase, lowercase and numbers</small>
-            </div>
+          
       </div>
-      <p>Create an account <a href='/register'>here</a></p>
-      <button >Login</button>
+      <p>Create an account <a [routerLink]="['/register']">here</a></p>
+      <button type="submit">Login</button>
+      <div *ngIf = "emailAddress.invalid && emailAddress.touched">
+          <small *ngIf="emailAddress.errors.required" >Email is required</small>
+          <small *ngIf="emailAddress.errors.email">Email is invalid</small>
+      </div>
+      <div *ngIf="passwordSecurity.invalid && passwordSecurity.touched">
+          <small *ngIf = "passwordSecurity.errors.required">Password required</small>
+          <small *ngIf = "passwordSecurity.errors.minlength">Password must be at least 6 characters</small>
+          <small *ngIf = "passwordSecurity.errors.pattern">Password must contain a combination of uppercase, lowercase and numbers</small>
+        </div>
     </form>
-      <input
+      <div class="reset">
+        <input
         [(ngModel)]="forgottenPasswordEmail"
         type="email"
         id="forgottenPasswordEmail"
         name="forgottenPasswordEmail">
-
-      <button (click)="forgotPassword()">Reset Password</button>
+        
+        <button (click)="forgotPassword()">Reset Password</button>
+      </div>
       
     
   </div>

@@ -11,21 +11,50 @@
 input, button{
     padding:10px;
     margin:10px;
-    bottom:100px;
+    bottom:70px;
     position: relative;
     font-family:  'Indie Flower';
 }
 
+button{
+    bottom:50px;
+}
+
 h1{
-   font-family: 'Mountains of Christmas';
-   font-size: 8rem;
-   position: relative;
-   bottom:130px;
+    font-family: 'Mountains of Christmas';
+    font-size: 3rem;
+    position: relative;
+    bottom:100px;
 }
 
 button{
     background-color:crimson;
     color:white
+}
+
+small {
+    color:crimson;
+}
+
+@media screen and (min-width: 600px){
+    h1{
+        font-size: 6rem;
+        bottom:100px;
+    }
+}
+
+
+@media screen and (min-width: 900px){
+  
+    input{
+        bottom:120px;
+    }
+
+    h1{
+    font-size: 8rem;
+    bottom:130px;
+    }
+
 }
 
 

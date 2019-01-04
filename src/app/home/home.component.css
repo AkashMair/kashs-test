@@ -1,6 +1,6 @@
 .flex{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 
 #background{
@@ -19,7 +19,6 @@
 
 .left{
     display: flex;
-    flex-basis: 200px;
     flex-direction: column;
     padding:20px;
     margin:20px;
@@ -92,4 +91,21 @@ li {
     background-color: green;
 }
 
+.star{
+    color:goldenrod;
+    /* -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-color: black; */
+    font-size: 2rem;
+    
+}
 
+@media screen and (min-width: 650px){
+        .flex{
+            flex-direction: row;
+        }
+
+        .left{
+            flex-basis: 200px;
+        }
+
+}

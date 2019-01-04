@@ -31,5 +31,9 @@ li {
     padding:10px;
     font-family: 'Mountains of Christmas', cursive;
     font-size:2rem;
+}
 
+.fa-arrow-left{
+    font-size:2rem;
+    margin:10px;
 }

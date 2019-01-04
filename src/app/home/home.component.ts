@@ -69,7 +69,7 @@ export class HomeComponent implements OnInit {
   //       finalize(() => this.downloadURL = fileRef.getDownloadURL() )
   //    )
   //   .subscribe()
-      this.session.upload(event);
+      this.session.upload(event)
   }
     
 
