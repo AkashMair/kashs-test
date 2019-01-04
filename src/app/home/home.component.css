@@ -99,6 +99,16 @@ li {
     
 }
 
+/* .update-form{
+    border: 1px solid green;
+    border-radius:10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+} */
+
 @media screen and (min-width: 650px){
         .flex{
             flex-direction: row;
